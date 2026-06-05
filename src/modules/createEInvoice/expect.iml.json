@@ -1,0 +1,98 @@
+[
+  {
+    "name": "sourceType",
+    "type": "select",
+    "label": "Visual Source",
+    "required": true,
+    "default": "html",
+    "help": "The human-readable part of the hybrid PDF. The compliant XML is built from the Invoice Data below.",
+    "options": [
+      {
+        "label": "HTML",
+        "value": "html",
+        "nested": [
+          { "name": "html", "type": "text", "label": "HTML", "required": true, "help": "Inline HTML for the visible invoice. Use self-contained markup; external scripts loaded from a CDN can hang the converter." }
+        ]
+      },
+      {
+        "label": "Template",
+        "value": "template",
+        "nested": [
+          { "name": "templateId", "type": "text", "label": "Template ID", "required": true, "help": "ID of a saved invoice template from the PolyDoc dashboard." },
+          { "name": "templateData", "type": "text", "label": "Template Data (JSON)", "help": "JSON object of variables passed to the Liquid template renderer." }
+        ]
+      },
+      {
+        "label": "URL",
+        "value": "url",
+        "nested": [
+          { "name": "url", "type": "url", "label": "URL", "required": true, "help": "URL of the page to render as the visible invoice." }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "eInvoiceStandard",
+    "type": "select",
+    "label": "Standard",
+    "required": true,
+    "default": "zugferd",
+    "help": "The hybrid e-invoice standard to embed.",
+    "options": [
+      { "label": "ZUGFeRD", "value": "zugferd" },
+      { "label": "Factur-X", "value": "facturx" }
+    ]
+  },
+  {
+    "name": "eInvoiceProfile",
+    "type": "select",
+    "label": "Profile",
+    "required": true,
+    "default": "en16931",
+    "help": "Data granularity profile to validate against.",
+    "options": [
+      { "label": "Minimum", "value": "minimum" },
+      { "label": "Basic WL", "value": "basicwl" },
+      { "label": "Basic", "value": "basic" },
+      { "label": "EN 16931", "value": "en16931" },
+      { "label": "Extended", "value": "extended" }
+    ]
+  },
+  { "name": "eInvoiceVerify", "type": "boolean", "label": "Verify", "default": false, "help": "Verify PDF/A and EN 16931 compliance after generation; returns an error if it fails." },
+  {
+    "name": "invoice",
+    "type": "text",
+    "label": "Invoice Data (JSON)",
+    "required": true,
+    "help": "Structured invoice: number, issueDate, currencyCode, seller, buyer, lines, totals. Include payment terms or a due date (rule BR-CO-25) and a seller tax ID for standard VAT. See docs.polydoc.tech for the full schema."
+  },
+  {
+    "name": "delivery",
+    "type": "select",
+    "label": "Delivery",
+    "default": "download",
+    "help": "How the generated PDF is returned.",
+    "options": [
+      { "label": "Download", "value": "download" },
+      {
+        "label": "Cloud Storage",
+        "value": "cloudStorage",
+        "nested": [
+          { "name": "presignedUrl", "type": "url", "label": "Presigned URL", "required": true, "help": "HTTP PUT presigned URL from your storage provider (S3 / GCS / Azure)." }
+        ]
+      },
+      {
+        "label": "Webhook",
+        "value": "webhook",
+        "nested": [
+          { "name": "webhookUrl", "type": "url", "label": "Webhook URL", "required": true, "help": "URL the generated PDF is delivered to." },
+          { "name": "webhookOptions", "type": "text", "label": "Webhook Options (JSON)", "help": "Extra webhook settings merged with the URL: async, method, headers, retries, retryDelay, timeout." }
+        ]
+      }
+    ]
+  },
+  { "name": "filename", "type": "text", "label": "Filename", "advanced": true, "help": "Output filename." },
+  { "name": "tag", "type": "text", "label": "Tag", "advanced": true, "help": "Label for logging and analytics (max 30 chars)." },
+  { "name": "timeout", "type": "number", "label": "Timeout (ms)", "advanced": true, "help": "Conversion timeout in milliseconds (max 600000)." },
+  { "name": "advanced", "type": "text", "label": "Advanced (JSON)", "advanced": true, "help": "Raw fields deep-merged into the request body for any API option not exposed above, e.g. layout, pdf.metadata, render." }
+]

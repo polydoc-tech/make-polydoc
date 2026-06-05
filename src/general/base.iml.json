@@ -1,0 +1,23 @@
+{
+  "baseUrl": "{{ifempty(connection.baseUrl; 'https://api.polydoc.tech')}}",
+  "headers": {
+    "authorization": "Bearer {{connection.apiKey}}",
+    "x-sandbox": "{{if(connection.sandbox; 'true'; 'false')}}"
+  },
+  "response": {
+    "error": {
+      "400": { "message": "[400] {{ifempty(body.message; 'PolyDoc rejected the request. Check your source and options.')}}" },
+      "401": { "message": "[401] Invalid PolyDoc API key. Check the key in your connection (dashboard.polydoc.tech, API Keys)." },
+      "403": { "message": "[403] This PolyDoc account is disabled. Contact hello@polydoc.tech." },
+      "413": { "message": "[413] The request is too large. Reduce the source size." },
+      "422": { "message": "[422] {{ifempty(body.message; 'Validation failed. For e-invoices, include payment terms or a due date and a seller tax ID for standard VAT.')}}" },
+      "429": { "message": "[429] PolyDoc rate limit reached. Slow down and retry shortly." },
+      "message": "[{{statusCode}}] {{ifempty(body.message; ifempty(body.error; 'PolyDoc request failed'))}}"
+    }
+  },
+  "log": {
+    "sanitize": [
+      "request.headers.authorization"
+    ]
+  }
+}

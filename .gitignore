@@ -1,0 +1,10 @@
+# Make Apps SDK secrets (API tokens for deploy origins) - never commit
+.secrets
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Local scratch
+*.log
+.DS_Store

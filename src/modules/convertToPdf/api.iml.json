@@ -1,0 +1,9 @@
+{
+  "url": "/pdf/convert",
+  "method": "POST",
+  "body": "{{buildPolydocBody('pdf'; parameters)}}",
+  "response": {
+    "type": "{{if(parameters.delivery = 'download'; 'binary'; 'automatic')}}",
+    "output": "{{buildPolydocOutput('pdf'; parameters.delivery; body; parameters.filename; '')}}"
+  }
+}

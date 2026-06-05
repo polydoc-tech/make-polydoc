@@ -1,0 +1,9 @@
+{
+  "url": "/screenshot/convert",
+  "method": "POST",
+  "body": "{{buildPolydocBody('screenshot'; parameters)}}",
+  "response": {
+    "type": "{{if(parameters.delivery = 'download'; 'binary'; 'automatic')}}",
+    "output": "{{buildPolydocOutput('screenshot'; parameters.delivery; body; parameters.filename; parameters.imageType)}}"
+  }
+}
