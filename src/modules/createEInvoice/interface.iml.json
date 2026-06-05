@@ -1,0 +1,5 @@
+[
+  { "name": "fileName", "type": "text", "label": "File name" },
+  { "name": "contentType", "type": "text", "label": "Content type" },
+  { "name": "data", "type": "buffer", "label": "Hybrid PDF (PDF/A-3)" }
+]

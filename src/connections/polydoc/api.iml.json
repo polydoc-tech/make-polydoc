@@ -1,0 +1,24 @@
+{
+  "url": "{{ifempty(parameters.baseUrl; 'https://api.polydoc.tech')}}/screenshot/convert",
+  "method": "POST",
+  "headers": {
+    "authorization": "Bearer {{parameters.apiKey}}",
+    "x-sandbox": "true"
+  },
+  "body": {
+    "source": "<p>polydoc</p>",
+    "screenshot": { "type": "png" }
+  },
+  "response": {
+    "type": "binary",
+    "valid": "{{statusCode = 200}}",
+    "error": {
+      "message": "[{{statusCode}}] PolyDoc rejected this API key. Create or check a key at dashboard.polydoc.tech (API Keys)."
+    }
+  },
+  "log": {
+    "sanitize": [
+      "request.headers.authorization"
+    ]
+  }
+}

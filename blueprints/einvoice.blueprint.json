@@ -1,0 +1,42 @@
+{
+  "name": "PolyDoc - ZUGFeRD / Factur-X e-invoice",
+  "flow": [
+    {
+      "id": 1,
+      "module": "polydoc:createEInvoice",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "sourceType": "html",
+        "html": "<h1>Invoice INV-001</h1><p>Customer SARL</p>",
+        "eInvoiceStandard": "zugferd",
+        "eInvoiceProfile": "en16931",
+        "eInvoiceVerify": true,
+        "invoice": "{\n  \"number\": \"INV-001\",\n  \"issueDate\": \"2026-01-31\",\n  \"dueDate\": \"2026-03-02\",\n  \"currencyCode\": \"EUR\",\n  \"seller\": {\n    \"name\": \"Your Company GmbH\",\n    \"address\": { \"line1\": \"Main St 1\", \"city\": \"Berlin\", \"postalCode\": \"10115\", \"countryCode\": \"DE\" },\n    \"taxId\": \"DE123456789\"\n  },\n  \"buyer\": {\n    \"name\": \"Customer SARL\",\n    \"address\": { \"line1\": \"Rue 2\", \"city\": \"Paris\", \"postalCode\": \"75001\", \"countryCode\": \"FR\" }\n  },\n  \"lines\": [\n    { \"description\": \"Widget\", \"quantity\": 2, \"unitPrice\": 10, \"lineTotal\": 20, \"vatRate\": 19, \"vatCategoryCode\": \"S\" }\n  ],\n  \"taxSummary\": [\n    { \"categoryCode\": \"S\", \"rate\": 19, \"taxableAmount\": 20, \"taxAmount\": 3.8 }\n  ],\n  \"paymentTerms\": \"Net 30\",\n  \"totalNetAmount\": 20,\n  \"totalTaxAmount\": 3.8,\n  \"totalGrossAmount\": 23.8\n}",
+        "delivery": "download",
+        "filename": "invoice.pdf"
+      },
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "notes": "POST or map your invoice data into Invoice Data (JSON). The result is a hybrid PDF/A-3 (human-readable PDF plus embedded EN 16931 XML). Include payment terms or a due date and a seller tax ID for standard VAT, or validation returns 422. PolyDoc generates the compliant document; Peppol transmission, archiving and tax reporting are separate."
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": { "orphans": [] },
+    "zone": "eu1.make.com"
+  }
+}

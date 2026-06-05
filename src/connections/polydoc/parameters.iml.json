@@ -1,0 +1,24 @@
+[
+  {
+    "name": "apiKey",
+    "type": "password",
+    "label": "API Key",
+    "required": true,
+    "help": "Your PolyDoc API key. Create one at dashboard.polydoc.tech under API Keys. Sent as Authorization: Bearer."
+  },
+  {
+    "name": "sandbox",
+    "type": "boolean",
+    "label": "Sandbox",
+    "default": false,
+    "help": "Run conversions in sandbox mode: higher quota, watermarked output. Adds the X-Sandbox header to every request."
+  },
+  {
+    "name": "baseUrl",
+    "type": "url",
+    "label": "Base URL",
+    "default": "https://api.polydoc.tech",
+    "advanced": true,
+    "help": "PolyDoc API base URL. Change only for self-hosted or staging environments."
+  }
+]

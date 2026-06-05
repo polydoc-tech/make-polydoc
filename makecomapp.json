@@ -1,0 +1,95 @@
+{
+  "fileVersion": 1,
+  "generalCodeFiles": {
+    "base": "src/general/base.iml.json",
+    "common": "src/general/common.json",
+    "readme": "README.md",
+    "groups": "src/general/groups.json"
+  },
+  "components": {
+    "connection": {
+      "polydoc": {
+        "label": "PolyDoc",
+        "connectionType": "basic",
+        "codeFiles": {
+          "communication": "src/connections/polydoc/api.iml.json",
+          "params": "src/connections/polydoc/parameters.iml.json",
+          "common": "src/connections/polydoc/common.json"
+        }
+      }
+    },
+    "module": {
+      "convertToPdf": {
+        "label": "Convert to PDF",
+        "description": "Render a URL, inline HTML, or a saved template to a PDF.",
+        "moduleType": "action",
+        "connection": "polydoc",
+        "altConnection": null,
+        "webhook": null,
+        "codeFiles": {
+          "communication": "src/modules/convertToPdf/api.iml.json",
+          "staticParams": "src/modules/convertToPdf/parameters.iml.json",
+          "mappableParams": "src/modules/convertToPdf/expect.iml.json",
+          "interface": "src/modules/convertToPdf/interface.iml.json",
+          "samples": "src/modules/convertToPdf/samples.iml.json",
+          "scope": "src/modules/convertToPdf/scope.iml.json"
+        }
+      },
+      "captureScreenshot": {
+        "label": "Capture Screenshot",
+        "description": "Capture a screenshot (PNG / JPEG / WebP) of a URL, inline HTML, or a saved template.",
+        "moduleType": "action",
+        "connection": "polydoc",
+        "altConnection": null,
+        "webhook": null,
+        "codeFiles": {
+          "communication": "src/modules/captureScreenshot/api.iml.json",
+          "staticParams": "src/modules/captureScreenshot/parameters.iml.json",
+          "mappableParams": "src/modules/captureScreenshot/expect.iml.json",
+          "interface": "src/modules/captureScreenshot/interface.iml.json",
+          "samples": "src/modules/captureScreenshot/samples.iml.json",
+          "scope": "src/modules/captureScreenshot/scope.iml.json"
+        }
+      },
+      "createEInvoice": {
+        "label": "Create E-Invoice",
+        "description": "Generate a hybrid ZUGFeRD / Factur-X PDF (PDF/A-3 with embedded EN 16931 XML).",
+        "moduleType": "action",
+        "connection": "polydoc",
+        "altConnection": null,
+        "webhook": null,
+        "codeFiles": {
+          "communication": "src/modules/createEInvoice/api.iml.json",
+          "staticParams": "src/modules/createEInvoice/parameters.iml.json",
+          "mappableParams": "src/modules/createEInvoice/expect.iml.json",
+          "interface": "src/modules/createEInvoice/interface.iml.json",
+          "samples": "src/modules/createEInvoice/samples.iml.json",
+          "scope": "src/modules/createEInvoice/scope.iml.json"
+        }
+      }
+    },
+    "rpc": {},
+    "function": {
+      "mergeDeep": {
+        "codeFiles": {
+          "code": "src/functions/mergeDeep/code.js",
+          "test": "src/functions/mergeDeep/test.js"
+        }
+      },
+      "buildPolydocBody": {
+        "codeFiles": {
+          "code": "src/functions/buildPolydocBody/code.js",
+          "test": "src/functions/buildPolydocBody/test.js"
+        }
+      },
+      "buildPolydocOutput": {
+        "codeFiles": {
+          "code": "src/functions/buildPolydocOutput/code.js",
+          "test": "src/functions/buildPolydocOutput/test.js"
+        }
+      }
+    },
+    "webhook": {}
+  },
+  "origins": []
+}

@@ -1,0 +1,6 @@
+[
+  {
+    "label": "Documents",
+    "modules": ["convertToPdf", "captureScreenshot", "createEInvoice"]
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "name": "PolyDoc - Screenshot of any URL",
+  "flow": [
+    {
+      "id": 1,
+      "module": "polydoc:captureScreenshot",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "sourceType": "url",
+        "url": "https://example.com",
+        "imageType": "png",
+        "fullPage": true,
+        "viewportWidth": 1280,
+        "viewportHeight": 800,
+        "delivery": "download",
+        "filename": "snapshot.png"
+      },
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "notes": "Set the URL (or switch Source to HTML or Template). Schedule the scenario for visual monitoring, social/OG images, or change tracking. Add a delivery module after this (Slack, Google Drive, S3, Email) to archive or send the image."
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": { "orphans": [] },
+    "zone": "eu1.make.com"
+  }
+}

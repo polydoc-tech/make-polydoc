@@ -1,0 +1,80 @@
+[
+  {
+    "name": "sourceType",
+    "type": "select",
+    "label": "Source",
+    "required": true,
+    "default": "url",
+    "help": "Where the screenshot content comes from.",
+    "options": [
+      {
+        "label": "URL",
+        "value": "url",
+        "nested": [
+          { "name": "url", "type": "url", "label": "URL", "required": true, "help": "The URL of the page to capture." }
+        ]
+      },
+      {
+        "label": "HTML",
+        "value": "html",
+        "nested": [
+          { "name": "html", "type": "text", "label": "HTML", "required": true, "help": "Inline HTML to capture. Use self-contained markup; external scripts loaded from a CDN can hang the converter." }
+        ]
+      },
+      {
+        "label": "Template",
+        "value": "template",
+        "nested": [
+          { "name": "templateId", "type": "text", "label": "Template ID", "required": true, "help": "ID of a saved template from the PolyDoc dashboard." },
+          { "name": "templateData", "type": "text", "label": "Template Data (JSON)", "help": "JSON object of variables passed to the Liquid template renderer." }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "imageType",
+    "type": "select",
+    "label": "Image Type",
+    "default": "png",
+    "help": "Output image format.",
+    "options": [
+      { "label": "PNG", "value": "png" },
+      { "label": "JPEG", "value": "jpeg" },
+      { "label": "WebP", "value": "webp" }
+    ]
+  },
+  { "name": "fullPage", "type": "boolean", "label": "Full Page", "default": false, "help": "Capture the entire scrollable page rather than just the viewport." },
+  { "name": "quality", "type": "number", "label": "Quality", "advanced": true, "help": "Compression quality for JPEG and WebP, 0 to 100." },
+  { "name": "viewportWidth", "type": "number", "label": "Viewport Width", "advanced": true, "help": "Viewport width in CSS pixels. Set together with height." },
+  { "name": "viewportHeight", "type": "number", "label": "Viewport Height", "advanced": true, "help": "Viewport height in CSS pixels. Set together with width." },
+  { "name": "devicePixelRatio", "type": "number", "label": "Device Pixel Ratio", "advanced": true, "help": "Device pixel ratio, e.g. 2 for retina. Applies only when width and height are set." },
+  {
+    "name": "delivery",
+    "type": "select",
+    "label": "Delivery",
+    "default": "download",
+    "help": "How the generated image is returned.",
+    "options": [
+      { "label": "Download", "value": "download" },
+      {
+        "label": "Cloud Storage",
+        "value": "cloudStorage",
+        "nested": [
+          { "name": "presignedUrl", "type": "url", "label": "Presigned URL", "required": true, "help": "HTTP PUT presigned URL from your storage provider (S3 / GCS / Azure)." }
+        ]
+      },
+      {
+        "label": "Webhook",
+        "value": "webhook",
+        "nested": [
+          { "name": "webhookUrl", "type": "url", "label": "Webhook URL", "required": true, "help": "URL the generated image is delivered to." },
+          { "name": "webhookOptions", "type": "text", "label": "Webhook Options (JSON)", "help": "Extra webhook settings merged with the URL: async, method, headers, retries, retryDelay, timeout." }
+        ]
+      }
+    ]
+  },
+  { "name": "filename", "type": "text", "label": "Filename", "advanced": true, "help": "Output filename." },
+  { "name": "tag", "type": "text", "label": "Tag", "advanced": true, "help": "Label for logging and analytics (max 30 chars)." },
+  { "name": "timeout", "type": "number", "label": "Timeout (ms)", "advanced": true, "help": "Conversion timeout in milliseconds (max 600000)." },
+  { "name": "advanced", "type": "text", "label": "Advanced (JSON)", "advanced": true, "help": "Raw fields deep-merged into the request body for any API option not exposed above, e.g. screenshot.clip, screenshot.omitBackground, render, request." }
+]

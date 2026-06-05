@@ -1,0 +1,90 @@
+[
+  {
+    "name": "sourceType",
+    "type": "select",
+    "label": "Source",
+    "required": true,
+    "default": "url",
+    "help": "Where the document content comes from.",
+    "options": [
+      {
+        "label": "URL",
+        "value": "url",
+        "nested": [
+          { "name": "url", "type": "url", "label": "URL", "required": true, "help": "The URL of the page to render." }
+        ]
+      },
+      {
+        "label": "HTML",
+        "value": "html",
+        "nested": [
+          { "name": "html", "type": "text", "label": "HTML", "required": true, "help": "Inline HTML to render. Use self-contained markup; external scripts loaded from a CDN can hang the converter." }
+        ]
+      },
+      {
+        "label": "Template",
+        "value": "template",
+        "nested": [
+          { "name": "templateId", "type": "text", "label": "Template ID", "required": true, "help": "ID of a saved template from the PolyDoc dashboard." },
+          { "name": "templateData", "type": "text", "label": "Template Data (JSON)", "help": "JSON object of variables passed to the Liquid template renderer." }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "format",
+    "type": "select",
+    "label": "Page Format",
+    "advanced": true,
+    "default": "A4",
+    "help": "Paper size for the PDF. For A0 to A6 or a custom size, use Advanced (JSON).",
+    "options": [
+      { "label": "A3", "value": "A3" },
+      { "label": "A4", "value": "A4" },
+      { "label": "A5", "value": "A5" },
+      { "label": "Ledger", "value": "Ledger" },
+      { "label": "Legal", "value": "Legal" },
+      { "label": "Letter", "value": "Letter" },
+      { "label": "Tabloid", "value": "Tabloid" }
+    ]
+  },
+  { "name": "landscape", "type": "boolean", "label": "Landscape", "advanced": true, "default": false, "help": "Use landscape orientation." },
+  { "name": "printBackground", "type": "boolean", "label": "Print Background", "advanced": true, "default": true, "help": "Print background graphics and colors." },
+  { "name": "scale", "type": "number", "label": "Scale", "advanced": true, "help": "Render scale, 0.1 to 2." },
+  { "name": "pageRanges", "type": "text", "label": "Page Ranges", "advanced": true, "help": "Pages to include, e.g. 1-5, 8. Empty means all pages." },
+  { "name": "outline", "type": "boolean", "label": "Outline (Bookmarks)", "advanced": true, "default": false, "help": "Generate PDF bookmarks from HTML headings (h1 to h6)." },
+  { "name": "tagged", "type": "boolean", "label": "Tagged (Accessible)", "advanced": true, "default": false, "help": "Produce a tagged, accessible PDF." },
+  { "name": "marginTop", "type": "text", "label": "Margin Top", "advanced": true, "help": "Top margin with optional unit, e.g. 10mm." },
+  { "name": "marginRight", "type": "text", "label": "Margin Right", "advanced": true, "help": "Right margin with optional unit, e.g. 10mm." },
+  { "name": "marginBottom", "type": "text", "label": "Margin Bottom", "advanced": true, "help": "Bottom margin with optional unit, e.g. 10mm." },
+  { "name": "marginLeft", "type": "text", "label": "Margin Left", "advanced": true, "help": "Left margin with optional unit, e.g. 10mm." },
+  {
+    "name": "delivery",
+    "type": "select",
+    "label": "Delivery",
+    "default": "download",
+    "help": "How the generated file is returned.",
+    "options": [
+      { "label": "Download", "value": "download" },
+      {
+        "label": "Cloud Storage",
+        "value": "cloudStorage",
+        "nested": [
+          { "name": "presignedUrl", "type": "url", "label": "Presigned URL", "required": true, "help": "HTTP PUT presigned URL from your storage provider (S3 / GCS / Azure)." }
+        ]
+      },
+      {
+        "label": "Webhook",
+        "value": "webhook",
+        "nested": [
+          { "name": "webhookUrl", "type": "url", "label": "Webhook URL", "required": true, "help": "URL the generated file is delivered to." },
+          { "name": "webhookOptions", "type": "text", "label": "Webhook Options (JSON)", "help": "Extra webhook settings merged with the URL: async, method, headers, retries, retryDelay, timeout." }
+        ]
+      }
+    ]
+  },
+  { "name": "filename", "type": "text", "label": "Filename", "advanced": true, "help": "Output filename." },
+  { "name": "tag", "type": "text", "label": "Tag", "advanced": true, "help": "Label for logging and analytics (max 30 chars)." },
+  { "name": "timeout", "type": "number", "label": "Timeout (ms)", "advanced": true, "help": "Conversion timeout in milliseconds (max 600000)." },
+  { "name": "advanced", "type": "text", "label": "Advanced (JSON)", "advanced": true, "help": "Raw fields deep-merged into the request body for any API option not exposed above, e.g. pdf.watermark, pdf.pdfa, pdf.encryption, render, request." }
+]
