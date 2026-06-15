@@ -18,10 +18,9 @@ to your **cloud storage** (presigned URL) or delivered to a **webhook**.
 
 Create a **PolyDoc** connection with an API key from
 [dashboard.polydoc.tech](https://dashboard.polydoc.tech) (API Keys). The key is sent
-as `Authorization: Bearer <key>`. Two more fields:
+as `Authorization: Bearer <key>`. One more field:
 
 - **Sandbox** - run conversions in sandbox mode (higher quota, watermarked output). Adds `X-Sandbox: true`.
-- **Base URL** - defaults to `https://api.polydoc.tech`. Change only for self-hosted or staging.
 
 When you create the connection, Make runs a verification request (a tiny sandbox
 screenshot) so an invalid key is caught immediately.
