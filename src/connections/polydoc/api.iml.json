@@ -1,5 +1,5 @@
 {
-  "url": "{{ifempty(parameters.baseUrl; 'https://api.polydoc.tech')}}/screenshot/convert",
+  "url": "https://api.polydoc.tech/screenshot/convert",
   "method": "POST",
   "headers": {
     "authorization": "Bearer {{parameters.apiKey}}",

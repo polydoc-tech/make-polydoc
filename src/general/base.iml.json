@@ -1,5 +1,5 @@
 {
-  "baseUrl": "{{ifempty(connection.baseUrl; 'https://api.polydoc.tech')}}",
+  "baseUrl": "https://api.polydoc.tech",
   "headers": {
     "authorization": "Bearer {{connection.apiKey}}",
     "x-sandbox": "{{if(connection.sandbox; 'true'; 'false')}}"
