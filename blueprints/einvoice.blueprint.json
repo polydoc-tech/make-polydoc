@@ -3,7 +3,7 @@
   "flow": [
     {
       "id": 1,
-      "module": "polydoc:createEInvoice",
+      "module": "polydoc-vnm0g9:createEInvoice",
       "version": 1,
       "parameters": {},
       "mapper": {

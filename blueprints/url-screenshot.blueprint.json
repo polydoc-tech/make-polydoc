@@ -3,7 +3,7 @@
   "flow": [
     {
       "id": 1,
-      "module": "polydoc:captureScreenshot",
+      "module": "polydoc-vnm0g9:captureScreenshot",
       "version": 1,
       "parameters": {},
       "mapper": {
