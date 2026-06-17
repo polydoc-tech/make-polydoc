@@ -1,9 +1,6 @@
-// Assemble the PolyDoc request body from a module's parameters. Mirrors the n8n
-// connector's buildRequestBody so every PolyDoc connector sends identical
-// payloads. `operation` is one of 'pdf' | 'screenshot' | 'einvoice'. Pure and
-// side-effect free. Relies on the mergeDeep custom function for the Advanced
-// (JSON) deep-merge.
 function buildPolydocBody(operation, p) {
+    // Mirrors the n8n connector's buildRequestBody so every PolyDoc connector
+    // sends identical payloads. operation is 'pdf' | 'screenshot' | 'einvoice'.
     p = p || {};
 
     function isPlainObject(value) {

@@ -1,7 +1,7 @@
-// Deep-merge `source` into `target`; `source` wins. Nested plain objects are
-// merged recursively, scalars and arrays overwrite. Powers the Advanced (JSON)
-// escape hatch so any API field not surfaced as a control is still reachable.
 function mergeDeep(target, source) {
+    // Powers the Advanced (JSON) escape hatch: deep-merge with source winning,
+    // nested plain objects merged recursively, scalars and arrays overwritten,
+    // so any API field not surfaced as a control is still reachable.
     function isPlainObject(value) {
         return typeof value === 'object' && value !== null && !Array.isArray(value);
     }

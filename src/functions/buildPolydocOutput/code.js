@@ -1,9 +1,7 @@
-// Shape a module's output bundle. For the Download delivery mode the gateway
-// returns the file bytes (the module's response.type is binary), so expose the
-// buffer with a filename and content type. For Cloud Storage and Webhook the
-// gateway returns JSON, which is passed through unchanged. Keeping this branch
-// in a tested function avoids fragile inline IML in every module.
 function buildPolydocOutput(operation, delivery, body, fileName, imageType) {
+    // Download mode returns file bytes (module response.type is binary), so wrap
+    // them with a filename and content type; cloud-storage and webhook modes get
+    // the gateway's JSON passed through unchanged.
     if (delivery !== 'download') {
         return body;
     }
