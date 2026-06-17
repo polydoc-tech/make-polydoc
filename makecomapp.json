@@ -94,10 +94,35 @@
     "origins": [
         {
             "label": "PolyDoc",
-            "appId": "polydoc",
+            "appId": "polydoc-vnm0g9",
             "baseUrl": "https://eu1.make.com/api",
             "appVersion": 1,
-            "apikeyFile": ".secrets/apikey"
+            "apikeyFile": ".secrets/apikey",
+            "idMapping": {
+                "connection": [
+                    {
+                        "local": "polydoc",
+                        "remote": "polydoc-vnm0g9"
+                    }
+                ],
+                "module": [
+                    {
+                        "local": "convertToPdf",
+                        "remote": "convertToPdf"
+                    },
+                    {
+                        "local": "captureScreenshot",
+                        "remote": "captureScreenshot"
+                    },
+                    {
+                        "local": "createEInvoice",
+                        "remote": "createEInvoice"
+                    }
+                ],
+                "function": [],
+                "rpc": [],
+                "webhook": []
+            }
         }
     ]
 }
