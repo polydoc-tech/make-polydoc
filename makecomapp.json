@@ -119,7 +119,20 @@
                         "remote": "createEInvoice"
                     }
                 ],
-                "function": [],
+                "function": [
+                    {
+                        "local": "mergeDeep",
+                        "remote": "mergeDeep"
+                    },
+                    {
+                        "local": "buildPolydocBody",
+                        "remote": "buildPolydocBody"
+                    },
+                    {
+                        "local": "buildPolydocOutput",
+                        "remote": "buildPolydocOutput"
+                    }
+                ],
                 "rpc": [],
                 "webhook": []
             }
