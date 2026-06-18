@@ -12,6 +12,8 @@ function mergeDeep(target, source) {
     }
     for (key in source) {
         if (!Object.prototype.hasOwnProperty.call(source, key)) continue;
+        // The advanced JSON is user-supplied; skip prototype-pollution keys.
+        if (key === '__proto__' || key === 'constructor' || key === 'prototype') continue;
         var value = source[key];
         if (isPlainObject(value) && isPlainObject(out[key])) {
             out[key] = mergeDeep(out[key], value);

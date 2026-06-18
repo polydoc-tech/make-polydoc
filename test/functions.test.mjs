@@ -31,6 +31,18 @@ test('mergeDeep does not mutate the target', () => {
     assert.deepEqual(target, { a: { x: 1 } });
 });
 
+test('mergeDeep ignores prototype-pollution keys in the source', () => {
+    const malicious = JSON.parse(
+        '{"__proto__":{"polluted":"yes"},"constructor":{"polluted":"yes"},"safe":"kept"}',
+    );
+    const merged = mergeDeep({ existing: 1 }, malicious);
+    assert.equal(merged.safe, 'kept');
+    assert.equal(merged.existing, 1);
+    assert.equal(Object.getPrototypeOf(merged), Object.prototype);
+    assert.equal(merged.polluted, undefined);
+    assert.equal(({}).polluted, undefined);
+});
+
 test('PDF from URL produces just the source', () => {
     assert.deepEqual(
         buildPolydocBody('pdf', { sourceType: 'url', url: 'https://example.com', delivery: 'download' }),
