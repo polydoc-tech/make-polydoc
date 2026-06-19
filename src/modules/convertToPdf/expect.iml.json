@@ -86,5 +86,5 @@
   { "name": "filename", "type": "text", "label": "Filename", "advanced": true, "help": "Output filename." },
   { "name": "tag", "type": "text", "label": "Tag", "advanced": true, "help": "Label for logging and analytics (max 30 chars)." },
   { "name": "timeout", "type": "number", "label": "Timeout (ms)", "advanced": true, "help": "Conversion timeout in milliseconds (max 600000)." },
-  { "name": "advanced", "type": "text", "label": "Advanced (JSON)", "advanced": true, "help": "Raw fields deep-merged into the request body for any API option not exposed above, e.g. pdf.watermark, pdf.pdfa, pdf.ua, pdf.encryption, render, request." }
+  { "name": "advanced", "type": "text", "label": "Advanced (JSON)", "advanced": true, "help": "Raw fields deep-merged into the request body for any API option not exposed above, e.g. pdf.watermark, pdf.pdfa, pdf.pdfua, pdf.encryption, render, request." }
 ]
