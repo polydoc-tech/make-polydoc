@@ -3,7 +3,7 @@
   "flow": [
     {
       "id": 1,
-      "module": "polydoc-vnm0g9:convertToPdf",
+      "module": "app#polydoc-vnm0g9:convertToPdf",
       "version": 1,
       "parameters": {},
       "mapper": {
