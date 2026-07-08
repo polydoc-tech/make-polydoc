@@ -127,6 +127,15 @@ bodies are accepted by the gateway, independent of Make's response layer.
 - **Response headers** (`x-conversion-id`, `x-credit-used`) are not currently
   surfaced in module output; the docs are unclear on header access. Add to the
   interface if they turn out to be reachable.
-- **App name / slug** in the blueprints (`polydoc:`) must match the deployed app's
-  name; adjust the blueprints after the app is created if Make assigns a different
-  slug.
+- **App name / slug in the blueprints (RESOLVED).** The deployed app is
+  `polydoc-vnm0g9` (Make force-suffixed the requested `polydoc`). Blueprints
+  reference each module as `app#polydoc-vnm0g9:<module>` and the connection type as
+  `account:app#polydoc-vnm0g9`. The `app#` prefix is mandatory for a private
+  (unapproved) custom app; without it the blueprint import fails with "Module Not
+  Found". Ground truth: export a manually-built scenario's blueprint and read its
+  `module` string.
+- **App icon.** The icon is not carried in `makecomapp.json`, so `Deploy to Make`
+  does not upload it. Set it once with a direct API call (persists across code
+  deploys):
+  `curl -X PUT -H "Authorization: Token <token>" -H "Content-Type: image/png" --data-binary @assets/icon.png https://eu1.make.com/api/v2/sdk/apps/polydoc-vnm0g9/1/icon`
+  A `{"changed":true}` / 200 response means it took. Re-run after any app recreate.
