@@ -50,7 +50,7 @@ deployed app name.
 
 This is the Make Apps SDK local-development format: `makecomapp.json` plus `.iml.json`
 component files under `src/`. The request-body assembly is ported from the n8n
-reference connector (`../../n8n-nodes-polydoc`) into custom IML functions so every
+reference connector ([n8n-nodes-polydoc](https://github.com/polydoc-tech/n8n-nodes-polydoc)) into custom IML functions so every
 PolyDoc connector sends identical payloads.
 
 ```bash

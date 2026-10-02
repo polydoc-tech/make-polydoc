@@ -36,7 +36,7 @@ const BASE_URL = (process.env.POLYDOC_BASE_URL || 'https://api.polydoc.tech').re
 const SANDBOX_SPACING_MS = 1500; // stay well under the ~5/sec sandbox limit
 
 // Self-contained, no-JavaScript demo report. External <script>/CDN assets can
-// hang the converter (playbook gotcha), so this uses inline CSS only.
+// hang the converter, so this uses inline CSS only.
 const PDF_HTML = [
     '<!doctype html><html><head><meta charset="utf-8"><style>',
     'body{font-family:Arial,Helvetica,sans-serif;margin:40px;color:#222}',
