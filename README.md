@@ -61,9 +61,6 @@ npm run smoke   # live sandbox smoke test against the real API (needs an API key
 The smoke test reads the key from `POLYDOC_API_KEY`, else `/tmp/polydoc-api-token.txt`,
 and always uses sandbox mode.
 
-Deploying to a Make organization and submitting to the marketplace are covered in
-[`ROADMAP.md`](./ROADMAP.md).
-
 ## License
 
 MIT
