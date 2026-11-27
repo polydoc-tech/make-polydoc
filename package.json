@@ -3,12 +3,29 @@
   "version": "1.0.0",
   "private": true,
   "description": "PolyDoc custom app for Make: convert HTML or URLs to PDF, capture screenshots, and generate EU e-invoices (Factur-X / ZUGFeRD).",
+  "keywords": [
+    "make",
+    "polydoc",
+    "pdf",
+    "html-to-pdf",
+    "screenshot",
+    "e-invoice",
+    "factur-x",
+    "zugferd"
+  ],
   "license": "MIT",
   "author": {
     "name": "PolyDoc",
     "email": "hello@polydoc.tech"
   },
   "homepage": "https://polydoc.tech",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polydoc-tech/make-polydoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/polydoc-tech/make-polydoc/issues"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "smoke": "node scripts/smoke.mjs"

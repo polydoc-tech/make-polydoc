@@ -63,4 +63,4 @@ and always uses sandbox mode.
 
 ## License
 
-MIT
+[MIT](./LICENSE)
